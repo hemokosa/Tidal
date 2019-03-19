@@ -1,0 +1,4 @@
+d2 $ slow 1608 $ n (run 201) # sound "spinoza"
+d2 $ slow 8 $ sound "spinoza" # n (irand 201)
+
+d2 silence

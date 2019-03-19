@@ -1,0 +1,7 @@
+d1 $ sound "{[sn sn hh sn*2 sn], [bd bd bd*5 bd bd bd bd], [arpy [arpy:3 arpy:5]]}"
+
+d1 $ n "[0, 3] [7, ~ 8, 9]" # sound "supergong"
+
+
+d1 silence
+hush

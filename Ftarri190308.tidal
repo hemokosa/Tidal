@@ -1,0 +1,128 @@
+33, 37, 96, 100
+-27, -22, 36, 40
+a1, cs2, c7, e7
+
+
+once $ n "-27" # sound "sole" # midichan 1
+once $ n "-26" # sound "piano" # gain 1.0 # sustain 2.0
+d4 $ slow 3 $ n "[41?, 43?, 44?]*17" # sound "piano" # gain 1.2 # sustain 2.0
+d3 $ slow 3 $ n "-27?*9" # sound "piano" # gain 0.6 # sustain 2.0
+
+d1 $ slow 4 $ n "-27 -22 36 40" # sound "piano" # gain 0.7
+d1 $ slow 4 $ (0.0 ~>) $ n "-27, -22, 36, 40" # sound "sole"
+
+d2 silence
+
+d5 silence
+
+d2 $ slow 8 $ n "~ a6*3 a7*2" # sound "piano" # gain 0.5 # sustain 2.0
+d3 $ slow 4 $ n "~ [cs2 d2](3, 8)" # sound "piano" # gain 0.6 # sustain 2.0
+d4 $ slow 8 $ n "-27 ~ -22 36 40" # sound "piano" # gain 0.6 # sustain 2.0
+d5 $ slow 4 $ n "e1*4 ~" # sound "piano" # gain 1.5 # sustain 2.0
+
+hush
+
+d6 $ slow 8 $ arp "up&down converge" $ n ("a3, d4 c3 e4" |+ "<'min7 'maj7 'aug>") # s "piano" # gain 0.8 # sustain 2.0
+
+d1 $ slow 4 $ n "a1 cs2 c7 e7" # sound "piano" # gain 0.6
+d1 $ n "a1 cs2 c7 e7" # sound "piano" # gain (range 0.5 0.9 $ rand) # midichan 0 # cps (slow 8 $ range 0.8 1.6 saw)
+
+6by9 7f10 7f5 7f9 7s5 7s5f9 7sus2 7sus4 9s5 9sus4 aug dim dim7 dom7 eleven elevenSharp five m11 m11s m11sharp m13m6 m6by9 m7f5 m7f9 m7flat5 m7flat9 m7s5 m7s9 m7sharp5 m7sharp5flat9 m7sharp9 m9 m9s5 m9sharp5 maj maj11 maj7 maj9 major major7 min min7 minor minor7 msharp5 nine nineSharp5 nineSus4 ninesus4 one plus sevenFlat10 sevenFlat5 sevenFlat9 sevenSharp5 sevenSharp5flat9 sevenSus2 sevenSus4 sharp5 six sixby9 sus2 sus4 thirteen
+
+up down updown downup up&down down&up converge diverge disconverge pinkyup pinkyupdown thumbup thumbupdown
+
+d1 $ n (off 0.125 (|+ 7) "<a1*2 cs2(3,8) c7(3,8,2) e7*2>") # sound "piano" # gain 0.5 # legato 10
+once $ jux rev $ n (off 0.125 (|+ 7)  "<a1*2 cs2(3,8) c7(3,8,2) e7*2>") # sound "piano" # gain 0.5 # legato 2
+d1 $ chunk 4 (|- n 5) $ jux rev $ n (off 0.125 (|- 12) $ off 0.125 (|+ 7)  "<a1*2 cs2(3,8) c7(3,8,2) e7*2>") # sound "piano" # gain 0.5 # legato 2
+d1 $ slow 4 $ chunk 4 (jux rev) $ arp "<pinkyup down thumbup up>" $ n "a1'maj cs2'maj c7'maj e7'maj" # sound "piano" # gain 0.5 # sustain 0.5
+
+d1 $ (|- n 12) $ n (range 0 48 $ rand) # s "piano" # gain (range 0.1 0.5 $ rand) # midichan 0
+d1 $ every 2 (|* speed "0.5") $ n (range 0 12 $ rand) |- n "24" # s "piano" # gain (range 0.1 0.5 $ rand) # midichan 0
+
+once $ slow 4 $ n "<a1*2 cs2(3,8) c7(3,8,2) e7*2>" # sound "piano" # gain (range 0.8 0.9 $ rand) # sustain 8.0 # midichan 0
+once $ jux rev $ slow 3 $ scramble 12 $ up (run 12) # sound "piano" # gain (range 0.4 0.6 $ rand) # sustain 8.0 # midichan 0
+
+d1 silence
+
+d3 $slow 8 $ scramble 4 $ n "-27 ~ -22*3 ~ 36 ~ 40 ~" # sound "sole" # midichan 1
+
+once $ slow (range 4 10 $ rand) $ jux rev $ every 2 (rot "<1 3 15 2>") $ n "0 < -10 14 > [ -22, 0] [2 30]" # sound "piano"
+once $ slow 2 $ juxBy 0.7 rev $ every 2 (rot "<1 3 2 6>") $ n "0 <0 4> [2 0] [2 3]" # sound "piano" # sustain "0.5 2.0"
+
+d1 $ jux rev $ slow 5 $ (|+ n "<4 -8 12>") $ (|* n (range 0.0 2.0 $ rand)) $ n "[-5, -3, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] ~" # sound "piano" # gain 0.5 # sustain "3.0 2.0"
+
+d1 $ slow 6 $ (|+ n "< -22 0 -40>") $ n "[0, 4]*11 ~ ~" # sound "piano" # gain 1.0 # sustain (range 2.0 5.0 $ rand)
+d2 $ slow 7 $ (|+ n "[-22 -27 36 40]") $ n "0*11 ~ ~" # sound "piano" # gain 1.0 # sustain (range 2.0 5.0 $ rand)
+
+d4 $ slow 3 $ n "36*2? -22?, -27? 40*2?" # sound "piano" # gain 1.2 # sustain 5.0
+
+d1 silence
+
+d2 $ ccv "0 127" # ccn 13 # s "piano" # midichan 0
+d2 $ ccn "30*4" # ccv (range 20 100 $ slow 30 sine) # s "piano" # midichan 0
+
+let stringLength = 13
+d2 $ ccv "0 20 50 120" # ccn 64 # s "piano"
+
+d3 $ ccv "0 60 120" # ccn 67 # s "piano"
+d3 silence
+
+d2 $ stack [
+    ccv (range 0 127 $ slow 30 sine) # ccn 13,
+    ccv "[0 70 30 110]/3" # ccn 64,
+    ccv "10 70" # ccn 67
+    ] # s "piano"
+
+
+d2 
+    $ (0.125 <~) 
+    $ n "[9 1](5,9)*3"  
+    # s "piano" 
+    # gain (range 0.5 0.7 $ rand) 
+    # sustain (range 0.5 0.7 $ rand)
+
+d2 silence
+
+d3 $ n "[[0?, 2?] 1](8, 11)*2?" # s "piano" # gain (range 0.0 1.5 $ rand) # sustain "0.2 0.9"
+d3 silence
+
+d4 $ every 3 (1000 ~>) $ n "<17 23>*8" # s "piano" # gain (range 0.5 0.7 $ rand) # sustain "0.9 1.0"
+
+d5 silence
+
+once $ scramble 19 $ n "[-25*9 2*4, -1 [2*7, 26*5] 8*6]" # s "piano" # gain (range 0.1 0.6 $ rand) # midichan 0
+
+once $ s "airhorn"
+
+once  $ n "0*8" # s "piano" # gain (range 0.5 1.2 $ rand) # sustain "0.9 0.5"
+
+
+hush
+
+main :: IO ()
+main = putStrLn "hello, world"
+
+:t once
+:t putStrLn
+
+(2,5) : A thirteenth century Persian rhythm called Khafif-e-ramal.
+(3,4) : The archetypal pattern of the Cumbia from Colombia, as well as a Calypso rhythm from Trinidad.
+(3,5,2) : Another thirteenth century Persian rhythm by the name of Khafif-e-ramal, as well as a Rumanian folk-dance rhythm.
+(3,7) : A Ruchenitza rhythm used in a Bulgarian folk-dance.
+(3,8) : The Cuban tresillo pattern.
+(4,7) : Another Ruchenitza Bulgarian folk-dance rhythm.
+(4,9) : The Aksak rhythm of Turkey.
+(4,11) : The metric pattern used by Frank Zappa in his piece titled Outside Now.
+(5,6) : Yields the York-Samai pattern, a popular Arab rhythm.
+(5,7) : The Nawakhat pattern, another popular Arab rhythm.
+(5,8) : The Cuban cinquillo pattern.
+(5,9) : A popular Arab rhythm called Agsag-Samai.
+(5,11) : The metric pattern used by Moussorgsky in Pictures at an Exhibition.
+(5,12) : The Venda clapping pattern of a South African children’s song.
+(5,16) : The Bossa-Nova rhythm necklace of Brazil.
+(7,8) : A typical rhythm played on the Bendir (frame drum).
+(7,12) : A common West African bell pattern.
+(7,16,14) : A Samba rhythm necklace from Brazil.
+(9,16) : A rhythm necklace used in the Central African Republic.
+(11,24,14) : A rhythm necklace of the Aka Pygmies of Central Africa.
+(13,24,5) : Another rhythm necklace of the Aka Pygmies of the upper Sangha.

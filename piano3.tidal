@@ -1,0 +1,107 @@
+import Sound.Tidal.MIDI.Context
+displayOutputDevices >>= putStrLn
+devices <- midiDevices
+
+m1 <- midiStream devices "IAC Driver Bus 1" 1 synthController
+m2 <- midiStream devices "IAC Driver Bus 1" 1 synthController
+m3 <- midiStream devices "IAC Driver Bus 1" 1 synthController
+m4 <- midiStream devices "IAC Driver Bus 1" 1 synthController
+
+cps 0.2
+-- penta: -1 0, 1 2 3, 4 5, 6 7 8, 9 10, 11 12
+-- 5th: 0 2 7, 1 4 6 9 11, 3 5 8 10
+-- 5th: 2 7 12, -3 4 11 18 25, -4 3 10 17
+
+m1
+$ degradeBy 0.0 $ n "[-39, -38?, 48, 49?]*16 ~"
+# dur "0.1"
+# velocity "1.0"
+# sustainpedal "0.9"
+
+
+
+m1
+$ swingBy (1/2) 2
+$ (|+| n (irand 3))
+$ degradeBy 0.0 $ n "[-39, -38?, [-2? 0? 2?], 45, 46?]*16 ~"
+# dur "0.6"
+# velocity "1.0"
+# sustainpedal "0.9"
+
+
+-- $ (|+| n "[0 4]")
+$ (|+| n (irand 3))
+$ n "[-29 -32, -23 -24]*24? ~ [28, 29, 30, 31, 32]*24?"
+# velocity (scale 0.8 0.9 rand)
+# sustainpedal (scale 0.2 0.8 rand)
+-- # modwheel (0.5)
+
+m1 silence
+
+m2
+-- $ (|+| n (irand 7))
+$ n "[7 5 7 5 ~]*16"
+# velocity "0.3 0.5"
+# dur "0.3 0.8"
+
+
+m3
+$ (|+| n (irand 3))
+$ n "[9 9 8]*16"
+# velocity "0.3 0.5"
+# dur "0.3 0.8"
+
+m4
+$ (|+| n (irand 3))
+$ n "[9 -9]*16"
+# velocity "0.3 0.5"
+# dur "0.3 0.8"
+
+m4 silence
+
+-- $ brak
+-- $ every (irand 5) (0.25 ~>)
+-- $ every 2 (fast 3)
+-- $ whenmod 8 5 (fast 2)
+-- $ whenmod 8 6 (rev)
+-- $ swingBy (1/2) 2
+-- $ degradeBy 0.3
+-- $ sometimesBy 0.25 (palindrome)
+-- $ sometimesBy 0.75 (0.5 ~>)
+-- $ fast "2 0.5 0.5 0.5"
+-- $ scramble 6
+-- $ degradeBy 0.3
+-- $ slow "1 1.1 3"
+-- $ iter 4
+-- $ shuffle 3
+
+-- $ (|+| n "[-5 0 5 2]")
+-- $ (|+| n "[0 2]")
+-- $ (|+| n (irand 12))
+-- $ (|+| n "1 2 3")
+-- $ n "[<-1 0> <1 2 3> <4 5> <6 7 8> <9 10> <11 12>]"
+-- $ n "<0 2 7> <1 4 6 9 11> <3 5 8 10>"
+-- $ n "[<-24 -23 -22 -21>]*12? ~"
+-- $ n "[<-5 2>?, 7?, <12 13>]*18"
+-- $ n "[-3 4 11 18 25]*24?"
+-- $ n "[[-5, 9 [5, 6](4, 5)]*3?]"
+
+-- # nudge (slow 8 $ sine)
+-- # nudge "[0 0.04]*4"
+-- # dur "0.5 0.2"
+-- # dur (scale 0.1 0.4 sine1)
+-- # velocity "0.3"
+-- # velocity (rand)
+-- # velocity (scale 0.2 0.4 $ slow 1.5 saw1)
+-- # sustainpedal "0.0"
+-- # sustainpedal "0.5 1.0"
+-- # sustainpedal (scale 0.0 1.0 $ slow 4 sine1)
+-- # modwheel (sine1)
+-- # modwheel "0.1? 0.5?"
+-- # modwheel "0.1 0.3 0.2"
+-- # modwheel (scale 0.0 0.1 sine1)
+
+m1 silence
+m2 silence
+m3 silence
+m4 silence

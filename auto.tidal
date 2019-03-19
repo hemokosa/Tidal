@@ -1,0 +1,6 @@
+do
+   d1 $
+      whenmod 7 4 (palindrome) $
+      slow (4 + irand 4) $ degradeBy 0.5 $ s " Lo-kick*33 pp*11? "
+      |=| n (every 5 (palindrome) $ run 31)
+      |=| cut "-1"
