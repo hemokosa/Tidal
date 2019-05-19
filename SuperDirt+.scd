@@ -9,7 +9,6 @@ MIDIClient.init;
 ~dirt.soundLibrary.addMIDI(\piano, ~midiOut);
 ~midiOut.latency = 0.05;
 
-
 ~dirt = SuperDirt(2, s);
 ~dirt.start();
 ~dirt.loadSoundFiles;
