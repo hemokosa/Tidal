@@ -1,0 +1,39 @@
+-- TidalCycles https://tidalcycles.org/index.php/Welcome
+-- Pianoteque https://www.modartt.com/pianoteq
+-- （SuperCollider https://supercollider.github.io/）
+
+-- 拡張されたピアノ奏法
+
+-- ・音源としてのピアノ
+-- ・インターフェイスとしてのピアノ
+
+-- ・プレパレーション：（主に）音源としての拡張
+-- ・特殊奏法：（主に）インターフェイスの拡張
+
+-- ・音源としてのピアノ：（アプリケーション）Pianoteque
+-- ・インターフェイスとしてのピアノ：（プログラミング言語）TidalCycles
+
+-- Pianoteque
+
+
+
+
+
+
+d1 $ sound "909 ~ bass bass:4"
+d1 $ sound "bd"
+d1 $ sound "bd*11? bd"
+d1 $ sound "bd*3"
+d1 $ sound "bd:1 sn:3"
+d1 $ sound "bd:1 sn:3 ~ sn:3"
+hush
+
+d1 silence
+d2 silence
+d1 $ sound "bd:3 [sn:1*2] ~ bd:3"
+d1 $ sound "bd [[sn:1*2] bd] [sn:1 [bd*2]]"
+d1 $ stack[
+  sound "bd:3 [sn:1*2] ~ bd:3",
+  sound "bass ~ bass:3 ~",
+  sound "[~ cp]*4"
+]
